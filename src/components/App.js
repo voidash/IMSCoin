@@ -9,6 +9,7 @@ import About from './About'
 //web3 and ethereum stuff
 import Web3 from 'web3';
 import IMSToken from '../abis/IMSToken.json';
+import TokenMediator from '../abis/TokenMediator.json';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
   const [account, setAccount] = useState('0x');
   const [balance, setBalance] = useState('0');
   const [imsInstance, setImsInstance] = useState('');
+  const [mediator, setMediatorInstance] = useState('');
   const [loading, setLoading] = useState(true);
   const [imsAccount,] = useState('0x2202984dF578938D934DBa8479E6822c5dd1ad19');
 
@@ -69,6 +71,14 @@ function App() {
       } else {
         window.alert("IMSCoin hasn't been deployed to the Network. Check if you are connected to ethereum mainnet");
       }
+
+      const mediatorData = TokenMediator.networks[networkId];
+      if (mediatorData) {
+        const med = new web3.eth.Contract(TokenMediator.abi, mediatorData.address);
+        setMediatorInstance(med);
+      } else {
+        window.alert("IMSCoin hasn't been deployed to the Network. Check if you are connected to ethereum mainnet");
+      }
     }
 
     if (account !== "0x")
@@ -91,14 +101,12 @@ function App() {
 
     let c = await imsInstance.methods.balanceOf(imsAccount).call();
     console.log(c.toString());
-    imsInstance.methods.approve("0xACbCA90CBB08708aE5c15c56cA0F16D23Eed9662", "1000").send({ from: imsAccount });
 
-    // .on('transactionHash',
-    //   (hash) => {
-    //     // imsInstance.methods.transferFrom(imsAccount, account, '100').send({ from: imsAccount }).on('transactionHash', (hash) => {
-    //     //   setLoading(false);
-    //     // });
-    //   })
+    let d = await imsInstance.methods.name().call();
+    console.log(d);
+    mediator.methods.redeemTokens("1000").send({ from: account }).on('transactionHash', (hash) => {
+      setLoading(false);
+    });
   }
 
   let activeBody;
