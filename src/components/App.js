@@ -1,18 +1,20 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
-
-class App extends Component {
-  render() {
-    return (
-      <div>
-        < div className="mx-auto w-34 h-30 bg-gray-800 " >
-          <p className="text-lg font-semibold ">
-            Hello
-          </p>
-        </div >
-      </div>
-    );
-  }
+import Navbar from './Navbar'
+import Home from './Home'
+import Redeem from './Redeem'
+import BoughtItems from './BoughtList';
+import About from './About'
+function App() {
+  return (
+    <div>
+      <Navbar />
+      <Home />
+      <Redeem />
+      <BoughtItems />
+      <About />
+    </div>
+  );
 }
 
 export default App;
