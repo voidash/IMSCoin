@@ -10,9 +10,17 @@ function Redeem(props) {
                     setUid(data.target.value);
                 }} />
                 <div className="h-5"></div>
-                <button className="px-2 py-1 text-blue-50 bg-blue-800 ring ring-blue-500" onClick={() => props.transfer()}>Redeem Coins</button>
+                <button className="px-2 py-1 text-blue-50 bg-blue-800 ring ring-blue-500" onClick={() => {
+                    console.log(uid);
+                    props.transfer(uid);
+                }}>Redeem Coins</button>
+
 
             </div>
+
+            {props.message !== "" ? <div className="bg-green-400 w-full mx-auto mt-5 p-5 rounded">
+                {props.message}
+            </div> : <></>}
         </div>
     )
 }
