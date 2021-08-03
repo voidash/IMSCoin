@@ -26,7 +26,8 @@ The token is simple enough and doesn't promise anything extra functional or inno
 ## IMS Customer Frontend 
 - Users can view what they bought by typing in UID
 - Users can redeem the tokens based on total purchase price. 
-
+## Demo
+![IMS](./IMSRecord.gif)
 ### This is one of the repo that constitutes our Semester Project
 Members:
 - Adarsha Dhakal 
