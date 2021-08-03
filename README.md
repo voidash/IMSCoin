@@ -16,6 +16,12 @@ The token is simple enough and doesn't promise anything extra functional or inno
 - Tailwind : CSS Framework 
 - Web3 : Ethereum Javascript API
 
+## Steps to run
+
+- `$ npm i`
+- `$ npm i -g truffle`
+- `$ truffle migrate`
+- `$ npm run start`
 
 ## IMS Customer Frontend 
 - Users can view what they bought by typing in UID
