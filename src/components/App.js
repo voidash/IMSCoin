@@ -16,6 +16,7 @@ import axios from 'axios';
 
 
 function App() {
+  const baseURL = 'http://voidash.pythonanywhere.com';
 
   const [activeTab, setActiveTab] = useState('Home');
   const [mounted, setMounted] = useState(false);
@@ -99,7 +100,7 @@ function App() {
 
   const showBoughtItems = async (uid) => {
     try {
-      const response = await axios.get(`https://voidash.pythonanywhere.com/product/redeem/${uid}/`);
+      const response = await axios.get(`${baseURL}/product/viewToken/${uid}/`);
       console.log(response.data);
       console.log(response.data.message);
 
@@ -107,7 +108,7 @@ function App() {
         setshowMessage('The code you are trying to redeem is not valid. Please recheck it');
       } else {
         try {
-          const getReceipt = await axios.get(`https://voidash.pythonanywhere.com/product/receipt/${uid}/`);
+          const getReceipt = await axios.get(`${baseURL}/product/receipt/${uid}/`);
           console.log(getReceipt.data);
           let quantity = getReceipt.data['quantity'].split(",");
           let products = getReceipt.data['product'];
@@ -142,7 +143,7 @@ function App() {
 
   const validateUID = async (uid) => {
     try {
-      const response = await axios.get(`https://voidash.pythonanywhere.com/product/redeem/${uid}/`);
+      const response = await axios.get(`${baseURL}/product/redeem/${uid}/`);
       console.log(response.data);
       console.log(response.data.message);
 
@@ -152,7 +153,7 @@ function App() {
         setshowMessage('The code you used has already been redeemed');
       } else if (response.data.message === 'Congrats! You redeemed your token') {
         try {
-          const getReceipt = await axios.get(`https://voidash.pythonanywhere.com/product/receipt/${uid}/`);
+          const getReceipt = await axios.get(`${baseURL}/product/receipt/${uid}/`);
           let tokenAmountToRedeem = (parseInt(parseInt(getReceipt.data['purchase_price']) / 1000 * 100) + '');
           console.log(tokenAmountToRedeem);
           setshowMessage(`Now redeeming your token. The token rewarded is ${tokenAmountToRedeem} Please refresh your browser after transaction has been completed.`);
