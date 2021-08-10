@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Table from './Table';
 
 function BoughtItems(props) {
     let [inp, setInput] = useState('');
@@ -22,19 +23,7 @@ function BoughtItems(props) {
             <div className="mt-12">
                 <p className="text-center font-semibold text-lg"> Items you bought are</p>
             </div>
-            <table className="w-full text-left border-collapse">
-                <thead>
-                    <tr>
-                        <th className="z-20 font-semibold border-b-4">Items</th>
-                        <th className="z-20 font-semibold border-b-4">Quantity</th>
-                        <th className="z-20 font-semibold border-b-4">Price</th>
-                        <th className="z-20 font-semibold border-b-4">Total Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {props.data}
-                </tbody>
-            </table>
+            <Table data={props.data} />
         </div>
     )
 }

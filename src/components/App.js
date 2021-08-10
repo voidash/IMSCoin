@@ -13,10 +13,11 @@ import TokenMediator from '../abis/TokenMediator.json';
 
 //axios 
 import axios from 'axios';
+import Portal from './Portal';
 
 
 function App() {
-  const baseURL = 'http://voidash.pythonanywhere.com';
+  const baseURL = 'https://voidash.pythonanywhere.com';
 
   const [activeTab, setActiveTab] = useState('Home');
   const [mounted, setMounted] = useState(false);
@@ -198,6 +199,9 @@ function App() {
       break;
     case 'BoughtItems':
       activeBody = (<BoughtItems data={tableData} viewItems={showBoughtItems} message={message} />);
+      break;
+    case 'Login':
+      activeBody = (<Portal />);
       break;
     case 'About':
       activeBody = (<About />);

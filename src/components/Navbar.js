@@ -8,6 +8,7 @@ function Navbar(props) {
             </p>
             <div className="flex justify-center mt-2 flex-col md:flex-row">
                 <button onClick={() => props.tab('Home')} className="px-2 py-1 bg-gray-400 ring ring-gray-500">Home</button>
+                <button onClick={() => props.tab('Login')} className="px-2 py-1 bg-gray-400 ring ring-gray-500">Login</button>
                 <button onClick={() => props.tab('Redeem')} className="px-2 py-1 bg-gray-400 ring ring-gray-500">Redeem Coins</button>
                 <button onClick={() => props.tab('About')} className="px-2 py-1 bg-gray-400 ring ring-gray-500">About Us</button>
             </div>
